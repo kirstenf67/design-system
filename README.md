@@ -34,8 +34,6 @@ You can explore the current state of the design library live on GitHub Pages:
 
 [**View My Custom Design Library**](https://kirstenf67.github.io/rg-design-system/)
 
-*(Note: The URL assumes your GitHub username is `kirstenf67` and the repository name is `rg-design-system`. Please adjust if needed.)*
-
 ### 🚀 What's Next?
 
 I'll be regularly adding new components, refining existing ones, and expanding the documentation to cover:
