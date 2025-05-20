@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Design System - Vuetify</title>
+    <title>My Custom Design Library</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
@@ -11,17 +11,42 @@
     <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
 
     <style>
+        /* Custom global styles for your design library showcase */
         body {
-            font-family: 'Roboto', sans-serif; /* Apply Roboto font */
-            background-color: #f5f5f5; /* Light gray background */
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5; /* A soft, light gray background */
+            line-height: 1.6;
         }
         #app {
-            max-width: 960px; /* Constrain content width */
-            margin: 40px auto; /* Center the content */
-            padding: 20px;
+            max-width: 1200px; /* Wider content area for design examples */
+            margin: 40px auto;
+            padding: 30px;
             background-color: white;
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 12px; /* More pronounced rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow for elevation */
+        }
+        .section-header {
+            font-weight: 700; /* Bold headings */
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+        }
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: white; /* Default text color for swatches */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .color-swatch.dark-text {
+            color: #333; /* For light background swatches */
         }
     </style>
 </head>
@@ -30,62 +55,186 @@
         <v-app>
             <v-main>
                 <v-container>
-                    <h1 class="text-h4 text-blue-darken-3 mb-6">My Design System - Vuetify</h1>
+                    <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
+                        My Custom Design Library
+                    </h1>
+                    <p class="text-center text-body-1 text-grey-darken-2 mb-12">
+                        A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
+                    </p>
 
-                    <v-card class="mb-8" elevation="2" rounded="lg">
-                        <v-card-title class="text-h5 text-blue-darken-2">Buttons</v-card-title>
-                        <v-card-text>
-                            <div class="d-flex flex-wrap ga-4">
-                                <v-btn color="primary">Primary Button</v-btn>
-                                <v-btn color="success">Success Button</v-btn>
-                                <v-btn color="warning">Warning Button</v-btn>
-                                <v-btn color="error">Danger Button</v-btn>
-                                <v-btn color="info">Info Button</v-btn>
-                                <v-btn variant="outlined" color="primary">Outlined Button</v-btn>
-                                <v-btn variant="text" color="primary">Text Button</v-btn>
+                    <v-row class="mb-10">
+                        <v-col cols="12">
+                            <h2 class="text-h4 section-header text-blue-darken-3">01. Colors</h2>
+                            <p class="text-body-1 text-grey-darken-1 mb-6">
+                                Defining the primary, accent, and semantic colors that form the visual identity of the system.
+                            </p>
+                            <v-row justify="center" class="ga-4">
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-primary">Primary<br>#2196F3</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-secondary">Secondary<br>#424242</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-accent">Accent<br>#FFC107</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-success">Success<br>#4CAF50</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-error">Error<br>#F44336</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-info">Info<br>#2196F3</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-warning dark-text">Warning<br>#FFC107</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-customBrandBlue">Brand Blue<br>#003366</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-grey-lighten-2 dark-text">Light Gray<br>#EEEEEE</div>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <div class="color-swatch bg-grey-darken-3">Dark Gray<br>#424242</div>
+                                </v-col>
+                            </v-row>
+                        </v-col>
+                    </v-row>
+
+                    <v-row class="mb-10">
+                        <v-col cols="12">
+                            <h2 class="text-h4 section-header text-blue-darken-3">02. Typography</h2>
+                            <p class="text-body-1 text-grey-darken-1 mb-6">
+                                Guidelines for consistent text hierarchy, readability, and visual impact across the interface.
+                            </p>
+                            <div class="mb-4">
+                                <h1 class="text-h3 font-weight-bold mb-2">Heading 1 - The quick brown fox jumps over the lazy dog.</h1>
+                                <p class="text-caption text-grey">Used for main page titles.</p>
                             </div>
-                        </v-card-text>
-                    </v-card>
+                            <div class="mb-4">
+                                <h2 class="text-h4 font-weight-medium mb-2">Heading 2 - The quick brown fox jumps over the lazy dog.</h2>
+                                <p class="text-caption text-grey">Used for section titles.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="text-h5 mb-2">Heading 3 - The quick brown fox jumps over the lazy dog.</h3>
+                                <p class="text-caption text-grey">Used for sub-sections.</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-body-1 mb-2">Body Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p class="text-caption text-grey">Standard paragraph text for content.</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-subtitle-1 font-weight-medium mb-2">Subtitle 1 - The quick brown fox jumps over the lazy dog.</p>
+                                <p class="text-caption text-grey">Used for prominent secondary text.</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-caption mb-2">Caption Text - The quick brown fox jumps over the lazy dog.</p>
+                                <p class="text-caption text-grey">Small text for annotations or details.</p>
+                            </div>
+                        </v-col>
+                    </v-row>
 
-                    <v-card class="mb-8" elevation="2" rounded="lg">
-                        <v-card-title class="text-h5 text-blue-darken-2">Typography</v-card-title>
-                        <v-card-text>
-                            <p class="text-body-1 mb-2">This is the default body text.</p>
-                            <p class="font-weight-medium text-body-1 mb-2">This is medium weight text.</p>
-                            <p class="font-italic text-body-1 mb-2">This is italic text.</p>
-                            <h3 class="text-h6 mb-2">Heading 3</h3>
-                            <h4 class="text-subtitle-1 mb-2">Heading 4</h4>
-                            <h5 class="text-subtitle-2 mb-2">Heading 5</h5>
-                            <h6 class="text-caption mb-2">Heading 6</h6>
-                        </v-card-text>
-                    </v-card>
+                    <v-row class="mb-10">
+                        <v-col cols="12">
+                            <h2 class="text-h4 section-header text-blue-darken-3">03. Buttons</h2>
+                            <p class="text-body-1 text-grey-darken-1 mb-6">
+                                Interactive elements for user actions, categorized by hierarchy and visual emphasis.
+                            </p>
+                            <v-row align="center" class="mb-6 ga-4">
+                                <v-col cols="auto">
+                                    <v-btn color="primary" size="large">Primary Large</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn color="primary">Primary Default</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn color="primary" size="small">Primary Small</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn color="primary" rounded="xl">Rounded Button</v-btn>
+                                </v-col>
+                            </v-row>
+                            <v-row align="center" class="mb-6 ga-4">
+                                <v-col cols="auto">
+                                    <v-btn variant="outlined" color="secondary" size="large">Outlined Large</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn variant="outlined" color="secondary">Outlined Default</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn variant="outlined" color="secondary" size="small">Outlined Small</v-btn>
+                                </v-col>
+                            </v-row>
+                             <v-row align="center" class="mb-6 ga-4">
+                                <v-col cols="auto">
+                                    <v-btn variant="text" color="info" size="large">Text Large</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn variant="text" color="info">Text Default</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn variant="text" color="info" size="small">Text Small</v-btn>
+                                </v-col>
+                            </v-row>
+                            <v-row align="center" class="ga-4">
+                                <v-col cols="auto">
+                                    <v-btn color="success" prepend-icon="mdi-check-circle">Action</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn color="error" append-icon="mdi-cancel">Cancel</v-btn>
+                                </v-col>
+                                <v-col cols="auto">
+                                    <v-btn color="warning" icon="mdi-alert-circle"></v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-col>
+                    </v-row>
 
-                    <v-card class="mb-8" elevation="2" rounded="lg">
-                        <v-card-title class="text-h5 text-blue-darken-2">Forms</v-card-title>
-                        <v-card-text>
-                            <v-text-field
-                                label="Email"
-                                variant="outlined"
-                                density="compact"
-                                class="mb-4"
-                            ></v-text-field>
-                            <v-text-field
-                                label="Password"
-                                type="password"
-                                variant="outlined"
-                                density="compact"
-                                class="mb-4"
-                            ></v-text-field>
-                            <v-textarea
-                                label="Message"
-                                variant="outlined"
-                                density="compact"
-                                rows="3"
-                                class="mb-4"
-                            ></v-textarea>
-                            <v-btn color="primary">Submit</v-btn>
-                        </v-card-text>
-                    </v-card>
+                    <v-row class="mb-10">
+                        <v-col cols="12">
+                            <h2 class="text-h4 section-header text-blue-darken-3">04. Cards</h2>
+                            <p class="text-body-1 text-grey-darken-1 mb-6">
+                                Flexible containers for grouping related content, offering various levels of elevation and interaction.
+                            </p>
+                            <v-row>
+                                <v-col cols="12" md="4">
+                                    <v-card elevation="2" rounded="lg">
+                                        <v-card-title class="text-h6 text-blue-darken-2">Basic Card</v-card-title>
+                                        <v-card-text>
+                                            This is a simple card with minimal elevation, suitable for general content display.
+                                        </v-card-text>
+                                        <v-card-actions>
+                                            <v-btn variant="text" color="primary">Learn More</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-col>
+                                <v-col cols="12" md="4">
+                                    <v-card elevation="8" rounded="lg">
+                                        <v-card-title class="text-h6 text-blue-darken-2">Elevated Card</v-card-title>
+                                        <v-card-text>
+                                            A card with higher elevation, drawing more attention to its content. Ideal for important information.
+                                        </v-card-text>
+                                        <v-card-actions>
+                                            <v-btn variant="text" color="primary">View Details</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-col>
+                                <v-col cols="12" md="4">
+                                    <v-card elevation="0" rounded="lg" border>
+                                        <v-card-title class="text-h6 text-blue-darken-2">Outlined Card</v-card-title>
+                                        <v-card-text>
+                                            A card with an outline, blending more subtly into the background. Useful for secondary content.
+                                        </v-card-text>
+                                        <v-card-actions>
+                                            <v-btn variant="text" color="primary">Explore</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+                        </v-col>
+                    </v-row>
 
                 </v-container>
             </v-main>
@@ -96,12 +245,37 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
 
     <script>
-        // Create a new Vuetify instance
-        const vuetify = Vuetify.createVuetify();
+        // Create a new Vuetify instance with custom theme colors
+        const vuetify = Vuetify.createVuetify({
+            theme: {
+                themes: {
+                    light: {
+                        colors: {
+                            // Default Material Design colors (can be overridden)
+                            primary: '#1976D2', // A standard blue
+                            secondary: '#424242', // Dark grey
+                            accent: '#FFC107', // Amber
+                            error: '#FF5252', // Red
+                            info: '#2196F3', // Light blue
+                            success: '#4CAF50', // Green
+                            warning: '#FFC107', // Amber
+
+                            // Custom Brand Colors - Define your unique palette here!
+                            customBrandBlue: '#0A2E59', // Example: A deep, rich blue
+                            customBrandGreen: '#4CAF50', // Example: A vibrant green
+                            customBrandAccent: '#FFD700', // Example: A golden yellow
+                            customNeutralLight: '#F5F5F5', // Example: A very light gray
+                            customNeutralDark: '#333333', // Example: A dark charcoal
+                        },
+                    },
+                },
+            },
+        });
 
         // Create the Vue app instance
         const app = Vue.createApp({
             // Your Vue app options (data, methods, etc.) can go here
+            // For a static design library, you might not need much here initially.
         });
 
         // Use Vuetify with the Vue app
