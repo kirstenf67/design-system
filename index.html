@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Design System - Vuetify</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+            background-color: #f5f5f5; /* Light gray background */
+        }
+        #app {
+            max-width: 960px; /* Constrain content width */
+            margin: 40px auto; /* Center the content */
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-container>
+                    <h1 class="text-h4 text-blue-darken-3 mb-6">My Design System - Vuetify</h1>
+
+                    <v-card class="mb-8" elevation="2" rounded="lg">
+                        <v-card-title class="text-h5 text-blue-darken-2">Buttons</v-card-title>
+                        <v-card-text>
+                            <div class="d-flex flex-wrap ga-4">
+                                <v-btn color="primary">Primary Button</v-btn>
+                                <v-btn color="success">Success Button</v-btn>
+                                <v-btn color="warning">Warning Button</v-btn>
+                                <v-btn color="error">Danger Button</v-btn>
+                                <v-btn color="info">Info Button</v-btn>
+                                <v-btn variant="outlined" color="primary">Outlined Button</v-btn>
+                                <v-btn variant="text" color="primary">Text Button</v-btn>
+                            </div>
+                        </v-card-text>
+                    </v-card>
+
+                    <v-card class="mb-8" elevation="2" rounded="lg">
+                        <v-card-title class="text-h5 text-blue-darken-2">Typography</v-card-title>
+                        <v-card-text>
+                            <p class="text-body-1 mb-2">This is the default body text.</p>
+                            <p class="font-weight-medium text-body-1 mb-2">This is medium weight text.</p>
+                            <p class="font-italic text-body-1 mb-2">This is italic text.</p>
+                            <h3 class="text-h6 mb-2">Heading 3</h3>
+                            <h4 class="text-subtitle-1 mb-2">Heading 4</h4>
+                            <h5 class="text-subtitle-2 mb-2">Heading 5</h5>
+                            <h6 class="text-caption mb-2">Heading 6</h6>
+                        </v-card-text>
+                    </v-card>
+
+                    <v-card class="mb-8" elevation="2" rounded="lg">
+                        <v-card-title class="text-h5 text-blue-darken-2">Forms</v-card-title>
+                        <v-card-text>
+                            <v-text-field
+                                label="Email"
+                                variant="outlined"
+                                density="compact"
+                                class="mb-4"
+                            ></v-text-field>
+                            <v-text-field
+                                label="Password"
+                                type="password"
+                                variant="outlined"
+                                density="compact"
+                                class="mb-4"
+                            ></v-text-field>
+                            <v-textarea
+                                label="Message"
+                                variant="outlined"
+                                density="compact"
+                                rows="3"
+                                class="mb-4"
+                            ></v-textarea>
+                            <v-btn color="primary">Submit</v-btn>
+                        </v-card-text>
+                    </v-card>
+
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.js"></script>
+
+    <script>
+        // Create a new Vuetify instance
+        const vuetify = Vuetify.createVuetify();
+
+        // Create the Vue app instance
+        const app = Vue.createApp({
+            // Your Vue app options (data, methods, etc.) can go here
+        });
+
+        // Use Vuetify with the Vue app
+        app.use(vuetify);
+
+        // Mount the app to the #app div
+        app.mount('#app');
+    </script>
+</body>
+</html>
