@@ -32,7 +32,7 @@ This library is under active development. You'll see new components, refined sty
 
 You can explore the current state of the design library live on GitHub Pages:
 
-[**View My Custom Design Library**](https://kirstenf67.github.io/design-system/){:target="_blank"}
+<a href="https://kirstenf67.github.io/design-system/" target="_blank"><b>View My Custom Design Library</b></a>
 
 ### 🚀 What's Next?
 
