@@ -18,6 +18,14 @@
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
                 <v-spacer></v-spacer>
+                <v-switch
+                    v-model="isDarkTheme"
+                    hide-details
+                    inset
+                    color="white"
+                    class="mx-2"
+                    :label="isDarkTheme ? 'Dark Mode' : 'Light Mode'"
+                ></v-switch>
                 <v-btn icon href="https://github.com/kirstenf67/design-system/" target="_blank">
                     <v-icon>mdi-github</v-icon>
                 </v-btn>
