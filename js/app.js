@@ -1,40 +1,87 @@
-<script>
-        // Create a new Vuetify instance with custom theme colors
-        const vuetify = Vuetify.createVuetify({
-            theme: {
-                themes: {
-                    light: {
-                        colors: {
-                            // Default Material Design colors (can be overridden)
-                            primary: '#1976D2', // A standard blue
-                            secondary: '#424242', // Dark grey
-                            accent: '#FFC107', // Amber
-                            error: '#FF5252', // Red
-                            info: '#2196F3', // Light blue
-                            success: '#4CAF50', // Green
-                            warning: '#FFC107', // Amber
+// Destructure necessary functions from the global Vue and Vuetify objects
+const { createApp, ref, watch } = Vue;
+const { createVuetify } = Vuetify;
 
-                            // Custom Brand Colors - Define your unique palette here!
-                            customBrandBlue: '#0A2E59', // Example: A deep, rich blue
-                            customBrandGreen: '#4CAF50', // Example: A vibrant green
-                            customBrandAccent: '#FFD700', // Example: A golden yellow
-                            customNeutralLight: '#F5F5F5', // Example: A very light gray
-                            customNeutralDark: '#333333', // Example: A dark charcoal
-                        },
-                    },
+// Create the Vuetify instance with your custom theme colors
+const vuetify = createVuetify({
+    theme: {
+        themes: {
+            light: {
+                colors: {
+                    primary: '#013886', // A standard blue
+                    secondary: '#424242', // Dark grey
+                    accent: '#FFC107', // Amber
+                    error: '#FF5252', // Red
+                    info: '#2196F3', // Light blue
+                    success: '#4CAF50', // Green
+                    warning: '#FFC107', // Amber
+
+                    // Your Custom Brand Colors
+                    customBrandBlue: '#0A2E59', // Example: A deep, rich blue
+                    customBrandGreen: '#4CAF50', // Example: A vibrant green
+                    customBrandAccent: '#FFD700', // Example: A golden yellow
+                    customNeutralLight: '#F5F5F5', // Example: A very light gray
+                    customNeutralDark: '#333333', // Example: A dark charcoal
                 },
             },
-        });
+        },
+    },
+});
 
-        // Create the Vue app instance
-        const app = Vue.createApp({
-            // Your Vue app options (data, methods, etc.) can go here
-            // For a static design library, you might not need much here initially.
-        });
+// Create the Vue app instance
+const app = createApp({
+    data() {
+        return {
+            drawer: true, // Controls the visibility of the navigation drawer
+            currentPage: 'introduction', // Stores the ID of the currently active content section
+            navigationItems: [
+                // Links now use hash-based routing for SPA
+                { id: 'introduction', title: 'Introduction', icon: 'mdi-home', link: '#introduction' },
+                { id: 'colors', title: 'Colors', icon: 'mdi-palette', link: '#colors' },
+                { id: 'typography', title: 'Typography', icon: 'mdi-format-text', link: '#typography' },
+                { id: 'buttons', title: 'Buttons', link: '#buttons' }, // No 'icon' property for Buttons
+                { id: 'cards', title: 'Cards', link: '#cards' },     // No 'icon' property for Cards
+            ],
+        };
+    },
+    methods: {
+        // Updates `currentPage` based on the URL hash
+        updateCurrentPage() {
+            const hash = window.location.hash.substring(1); // Remove the '#'
+            if (hash) {
+                // Check if the hash matches any of our navigation item IDs
+                const foundItem = this.navigationItems.find(item => item.id === hash);
+                if (foundItem) {
+                    this.currentPage = hash;
+                } else {
+                    // Fallback to introduction if hash doesn't match a defined section
+                    this.currentPage = 'introduction';
+                }
+            } else {
+                this.currentPage = 'introduction'; // Default page if no hash in URL
+            }
+        },
+    },
+    mounted() {
+        // Set initial drawer state based on screen size (open on desktop, closed on mobile)
+        this.drawer = this.$vuetify.display.mdAndUp;
 
-        // Use Vuetify with the Vue app
-        app.use(vuetify);
+        // Listen for URL hash changes (e.g., when clicking navigation links or browser back/forward)
+        window.addEventListener('hashchange', this.updateCurrentPage);
 
-        // Mount the app to the #app div
-        app.mount('#app');
-    </script>
+        // Call it once on mount to set the initial page based on the URL hash or default
+        this.updateCurrentPage();
+    },
+    watch: {
+        // Watch for changes in Vuetify's breakpoint to adjust drawer visibility
+        '$vuetify.display.mdAndUp'(newVal) {
+            this.drawer = newVal;
+        },
+    },
+});
+
+// Use Vuetify with the Vue app
+app.use(vuetify);
+
+// Mount the app to the #app div
+app.mount('#app');
