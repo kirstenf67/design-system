@@ -33,19 +33,17 @@
             >
                 <v-list density="default" color="transparent" nav>
                     <v-list-item
-                        v-for="(item, i) in navigationItems"
-                        :key="i"
-                        :href="item.link"
-                        link
-                        @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
-                        :active="currentPage === item.id"
-                        color="primary"
-                    >
-                        <v-list-item-icon v-if="item.icon">
-                            <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item>
+                    v-for="(item, i) in navigationItems"
+                    :key="i"
+                    :href="item.link"
+                    link
+                    @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
+                    :active="currentPage === item.id"
+                    color="primary"
+                    :prepend-icon="item.icon"
+                >
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item>
                 </v-list>
             </v-navigation-drawer>
 
