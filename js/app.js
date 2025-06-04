@@ -1,3 +1,5 @@
+// js/app.js
+
 import { customThemeColors } from './themeConfig.js';
 
 // Destructure necessary functions from the global Vue and Vuetify objects
@@ -18,12 +20,14 @@ const app = createApp({
         return {
             drawer: true,
             currentPage: 'introduction',
+            // New data property to control theme state
+            isDarkTheme: false, // Initialize with light theme as default
             navigationItems: [
                 { id: 'introduction', title: 'Introduction', icon: 'mdi-home', link: '#introduction' },
                 { id: 'colors', title: 'Colors', icon: 'mdi-palette', link: '#colors' },
                 { id: 'typography', title: 'Typography', icon: 'mdi-format-text', link: '#typography' },
-                { id: 'buttons', title: 'Buttons', icon: 'mdi-button-cursor', link: '#buttons' }, // Example with icon
-                { id: 'cards', title: 'Cards', icon: 'mdi-card-outline', link: '#cards' }, // Example with icon
+                { id: 'buttons', title: 'Buttons', icon: 'mdi-button-cursor', link: '#buttons' },
+                { id: 'cards', title: 'Cards', icon: 'mdi-card-outline', link: '#cards' },
             ],
         };
     },
@@ -46,10 +50,17 @@ const app = createApp({
         this.drawer = this.$vuetify.display.mdAndUp;
         window.addEventListener('hashchange', this.updateCurrentPage);
         this.updateCurrentPage();
+
+        // Initialize theme based on isDarkTheme value
+        this.$vuetify.theme.global.name = this.isDarkTheme ? 'dark' : 'light';
     },
     watch: {
         '$vuetify.display.mdAndUp'(newVal) {
             this.drawer = newVal;
+        },
+        // Watch for changes in isDarkTheme and update Vuetify's theme
+        isDarkTheme(newVal) {
+            this.$vuetify.theme.global.name = newVal ? 'dark' : 'light';
         },
     },
 });
