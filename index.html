@@ -15,276 +15,281 @@
 </head>
 <body>
     <div id="app">
-        <!-- Application Bar (Header) -->
-        <v-app-bar app color="blue-grey-darken-3" dark>
-            <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-btn icon href="https://github.com/kirstenf67/design-system/" target="_blank">
-                <v-icon>mdi-github</v-icon>
-            </v-btn>
-        </v-app-bar>
+        <!-- The <v-app> component is the root for Vuetify's layout system.
+             All layout components (v-app-bar, v-navigation-drawer, v-main, v-footer)
+             MUST be direct children of v-app. -->
+        <v-app>
+            <!-- Application Bar (Header) -->
+            <v-app-bar app color="blue-grey-darken-3" dark>
+                <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn icon href="https://github.com/kirstenf67/design-system/" target="_blank">
+                    <v-icon>mdi-github</v-icon>
+                </v-btn>
+            </v-app-bar>
 
-        <!-- Navigation Drawer (Sidebar) -->
-        <v-navigation-drawer
-            v-model="drawer"
-            app
-            :permanent="$vuetify.display.mdAndUp"
-            :temporary="!$vuetify.display.mdAndUp"
-        >
-            <v-list nav dense>
-                <v-list-item
-                    v-for="(item, i) in navigationItems"
-                    :key="i"
-                    :href="item.link"  <!-- Links now use hash-based routing -->
-                    link
-                    @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
-                    :active="currentPage === item.id"
-                    color="primary"
-                >
-                    <v-list-item-icon v-if="item.icon">
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
-
-        <!-- Main Content Area -->
-        <v-main>
-            <v-container>
-                <!-- Global Page Title and Description -->
-                <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
-                    Custom Design Library
-                </h1>
-                <p class="text-center text-body-1 text-grey-darken-2 mb-12">
-                    A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
-                </p>
-
-                <!-- Introduction Section Content -->
-                <div v-show="currentPage === 'introduction'" class="content-section">
-                    <v-row class="mb-10">
-                        <v-col cols="12">
-                            <h2 class="text-h4 section-header text-blue-darken-3">00. Introduction</h2>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Welcome to Kirsten's Design System! This system aims to provide a consistent and reusable set of guidelines, components, and tools for building digital products.
-                            </p>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Our goal is to streamline development, improve user experience, and maintain brand consistency across all applications.
-                            </p>
-                            <h3 class="text-h5 text-blue-darken-3 mt-8 mb-4">Getting Started</h3>
-                            <p class="text-body-1 text-grey-darken-1">
-                                Navigate through the sections using the side menu to explore different aspects of the design system, including colors, typography, components, and more.
-                            </p>
-                        </v-col>
-                    </v-row>
-                </div>
-
-                <!-- Colors Section Content -->
-                <div v-show="currentPage === 'colors'" class="content-section">
-                    <v-row class="mb-10">
-                        <v-col cols="12">
-                            <h2 class="text-h4 section-header text-blue-darken-3">01. Colors</h2>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Defining the primary, accent, and semantic colors that form the visual identity of the system.
-                            </p>
-                            <v-row justify="center" class="ga-4">
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-primary">Primary<br>#013886</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-secondary">Secondary<br>#424242</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-accent dark-text">Accent<br>#FFC107</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-success">Success<br>#4CAF50</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-error">Error<br>#F44336</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-info">Info<br>#2196F3</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-warning dark-text">Warning<br>#FFC107</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-customBrandBlue">Brand Blue<br>#0A2E59</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-grey-lighten-2 dark-text">Light Gray<br>#EEEEEE</div>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <div class="color-swatch bg-grey-darken-3">Dark Gray<br>#424242</div>
-                                </v-col>
-                            </v-row>
-                        </v-col>
-                    </v-row>
-                </div>
-
-                <!-- Typography Section Content -->
-                <div v-show="currentPage === 'typography'" class="content-section">
-                    <v-row class="mb-10">
-                        <v-col cols="12">
-                            <h2 class="text-h4 section-header text-blue-darken-3">02. Typography</h2>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Guidelines for consistent text hierarchy, readability, and visual impact across the interface.
-                            </p>
-                            <div class="mb-4">
-                                <h1 class="text-h3 font-weight-bold mb-2">Heading 1 - The quick brown fox jumps over the lazy dog.</h1>
-                                <p class="text-caption text-grey">Used for main page titles.</p>
-                            </div>
-                            <div class="mb-4">
-                                <h2 class="text-h4 font-weight-medium mb-2">Heading 2 - The quick brown fox jumps over the lazy dog.</h2>
-                                <p class="text-caption text-grey">Used for section titles.</p>
-                            </div>
-                            <div class="mb-4">
-                                <h3 class="text-h5 mb-2">Heading 3 - The quick brown fox jumps over the lazy dog.</h3>
-                                <p class="text-caption text-grey">Used for sub-sections.</p>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-body-1 mb-2">Body Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <p class="text-caption text-grey">Standard paragraph text for content.</p>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-subtitle-1 font-weight-medium mb-2">Subtitle 1 - The quick brown fox jumps over the lazy dog.</p>
-                                <p class="text-caption text-grey">Used for prominent secondary text.</p>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-caption mb-2">Caption Text - The quick brown fox jumps over the lazy dog.</p>
-                                <p class="text-caption text-grey">Small text for annotations or details.</p>
-                            </div>
-                        </v-col>
-                    </v-row>
-                </div>
-
-                <!-- Buttons Section Content -->
-                <div v-show="currentPage === 'buttons'" class="content-section">
-                    <v-row class="mb-10">
-                        <v-col cols="12">
-                            <h2 class="text-h4 section-header text-blue-darken-3">03. Buttons</h2>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Interactive elements for user actions, categorized by hierarchy and visual emphasis.
-                            </p>
-                            <v-row align="center" class="mb-6 ga-4">
-                                <v-col cols="auto">
-                                    <v-btn color="primary" size="large">Primary Large</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn color="primary">Primary Default</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn color="primary" size="small">Primary Small</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn color="primary" rounded="xl">Rounded Button</v-btn>
-                                </v-col>
-                            </v-row>
-                            <v-row align="center" class="mb-6 ga-4">
-                                <v-col cols="auto">
-                                    <v-btn variant="outlined" color="secondary" size="large">Outlined Large</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn variant="outlined" color="secondary">Outlined Default</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn variant="outlined" color="secondary" size="small">Outlined Small</v-btn>
-                                </v-col>
-                            </v-row>
-                            <v-row align="center" class="mb-6 ga-4">
-                                <v-col cols="auto">
-                                    <v-btn variant="text" color="info" size="large">Text Large</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn variant="text" color="info">Text Default</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn variant="text" color="info" size="small">Text Small</v-btn>
-                                </v-col>
-                            </v-row>
-                            <v-row align="center" class="ga-4">
-                                <v-col cols="auto">
-                                    <v-btn color="success" prepend-icon="mdi-check-circle">Action</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn color="error" append-icon="mdi-cancel">Cancel</v-btn>
-                                </v-col>
-                                <v-col cols="auto">
-                                    <v-btn color="warning" icon="mdi-alert-circle"></v-btn>
-                                </v-col>
-                            </v-row>
-                        </v-col>
-                    </v-row>
-                </div>
-
-                <!-- Cards Section Content -->
-                <div v-show="currentPage === 'cards'" class="content-section">
-                    <v-row class="mb-10">
-                        <v-col cols="12">
-                            <h2 class="text-h4 section-header text-blue-darken-3">04. Cards</h2>
-                            <p class="text-body-1 text-grey-darken-1 mb-6">
-                                Flexible containers for grouping related content, offering various levels of elevation and interaction.
-                            </p>
-                            <v-row>
-                                <v-col cols="12" md="4">
-                                    <v-card elevation="2" rounded="lg">
-                                        <v-card-title class="text-h6 text-blue-darken-2">Basic Card</v-card-title>
-                                        <v-card-text>
-                                            This is a simple card with minimal elevation, suitable for general content display.
-                                        </v-card-text>
-                                        <v-card-actions>
-                                            <v-btn variant="text" color="primary">Learn More</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-col>
-                                <v-col cols="12" md="4">
-                                    <v-card elevation="8" rounded="lg">
-                                        <v-card-title class="text-h6 text-blue-darken-2">Elevated Card</v-card-title>
-                                        <v-card-text>
-                                            A card with higher elevation, drawing more attention to its content. Ideal for important information.
-                                        </v-card-text>
-                                        <v-card-actions>
-                                            <v-btn variant="text" color="primary">View Details</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-col>
-                                <v-col cols="12" md="4">
-                                    <v-card elevation="0" rounded="lg" border>
-                                        <v-card-title class="text-h6 text-blue-darken-2">Outlined Card</v-card-title>
-                                        <v-card-text>
-                                            A card with an outline, blending more subtly into the background. Useful for secondary content.
-                                        </v-card-text>
-                                        <v-card-actions>
-                                            <v-btn variant="text" color="primary">Explore</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-col>
-                            </v-row>
-                        </v-col>
-                    </v-row>
-                </div>
-
-            </v-container>
-        </v-main>
-
-        <!-- Footer -->
-        <v-footer
-            app
-            class="d-flex justify-center py-4"
-            color="grey-lighten-4"
-        >
-            <a
-                href="https://github.com/kirstenf67/design-system"
-                target="_blank"
-                class="text-decoration-none text-grey-darken-3"
-                rel="noopener noreferrer"
+            <!-- Navigation Drawer (Sidebar) -->
+            <v-navigation-drawer
+                v-model="drawer"
+                app
+                :permanent="$vuetify.display.mdAndUp"
+                :temporary="!$vuetify.display.mdAndUp"
             >
-                <v-icon icon="mdi-github" size="24"></v-icon>
-                <span class="ml-2">View Orange Owl Design Projects</span>
-            </a>
-        </v-footer>
+                <v-list nav dense>
+                    <v-list-item
+                        v-for="(item, i) in navigationItems"
+                        :key="i"
+                        :href="item.link"  <!-- Links now use hash-based routing -->
+                        link
+                        @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
+                        :active="currentPage === item.id"
+                        color="primary"
+                    >
+                        <v-list-item-icon v-if="item.icon">
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-navigation-drawer>
+
+            <!-- Main Content Area -->
+            <v-main>
+                <v-container>
+                    <!-- Global Page Title and Description -->
+                    <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
+                        Custom Design Library
+                    </h1>
+                    <p class="text-center text-body-1 text-grey-darken-2 mb-12">
+                        A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
+                    </p>
+
+                    <!-- Introduction Section Content -->
+                    <div v-show="currentPage === 'introduction'" class="content-section">
+                        <v-row class="mb-10">
+                            <v-col cols="12">
+                                <h2 class="text-h4 section-header text-blue-darken-3">00. Introduction</h2>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Welcome to Kirsten's Design System! This system aims to provide a consistent and reusable set of guidelines, components, and tools for building digital products.
+                                </p>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Our goal is to streamline development, improve user experience, and maintain brand consistency across all applications.
+                                </p>
+                                <h3 class="text-h5 text-blue-darken-3 mt-8 mb-4">Getting Started</h3>
+                                <p class="text-body-1 text-grey-darken-1">
+                                    Navigate through the sections using the side menu to explore different aspects of the design system, including colors, typography, components, and more.
+                                </p>
+                            </v-col>
+                        </v-row>
+                    </div>
+
+                    <!-- Colors Section Content -->
+                    <div v-show="currentPage === 'colors'" class="content-section">
+                        <v-row class="mb-10">
+                            <v-col cols="12">
+                                <h2 class="text-h4 section-header text-blue-darken-3">01. Colors</h2>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Defining the primary, accent, and semantic colors that form the visual identity of the system.
+                                </p>
+                                <v-row justify="center" class="ga-4">
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-primary">Primary<br>#013886</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-secondary">Secondary<br>#424242</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-accent dark-text">Accent<br>#FFC107</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-success">Success<br>#4CAF50</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-error">Error<br>#F44336</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-info">Info<br>#2196F3</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-warning dark-text">Warning<br>#FFC107</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-customBrandBlue">Brand Blue<br>#0A2E59</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-grey-lighten-2 dark-text">Light Gray<br>#EEEEEE</div>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <div class="color-swatch bg-grey-darken-3">Dark Gray<br>#424242</div>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+                        </v-row>
+                    </div>
+
+                    <!-- Typography Section Content -->
+                    <div v-show="currentPage === 'typography'" class="content-section">
+                        <v-row class="mb-10">
+                            <v-col cols="12">
+                                <h2 class="text-h4 section-header text-blue-darken-3">02. Typography</h2>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Guidelines for consistent text hierarchy, readability, and visual impact across the interface.
+                                </p>
+                                <div class="mb-4">
+                                    <h1 class="text-h3 font-weight-bold mb-2">Heading 1 - The quick brown fox jumps over the lazy dog.</h1>
+                                    <p class="text-caption text-grey">Used for main page titles.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h2 class="text-h4 font-weight-medium mb-2">Heading 2 - The quick brown fox jumps over the lazy dog.</h2>
+                                    <p class="text-caption text-grey">Used for section titles.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h3 class="text-h5 mb-2">Heading 3 - The quick brown fox jumps over the lazy dog.</h3>
+                                    <p class="text-caption text-grey">Used for sub-sections.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-body-1 mb-2">Body Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p class="text-caption text-grey">Standard paragraph text for content.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-subtitle-1 font-weight-medium mb-2">Subtitle 1 - The quick brown fox jumps over the lazy dog.</p>
+                                    <p class="text-caption text-grey">Used for prominent secondary text.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <p class="text-caption mb-2">Caption Text - The quick brown fox jumps over the lazy dog.</p>
+                                    <p class="text-caption text-grey">Small text for annotations or details.</p>
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </div>
+
+                    <!-- Buttons Section Content -->
+                    <div v-show="currentPage === 'buttons'" class="content-section">
+                        <v-row class="mb-10">
+                            <v-col cols="12">
+                                <h2 class="text-h4 section-header text-blue-darken-3">03. Buttons</h2>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Interactive elements for user actions, categorized by hierarchy and visual emphasis.
+                                </p>
+                                <v-row align="center" class="mb-6 ga-4">
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" size="large">Primary Large</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary">Primary Default</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" size="small">Primary Small</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" rounded="xl">Rounded Button</v-btn>
+                                    </v-col>
+                                </v-row>
+                                <v-row align="center" class="mb-6 ga-4">
+                                    <v-col cols="auto">
+                                        <v-btn variant="outlined" color="secondary" size="large">Outlined Large</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn variant="outlined" color="secondary">Outlined Default</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn variant="outlined" color="secondary" size="small">Outlined Small</v-btn>
+                                    </v-col>
+                                </v-row>
+                                <v-row align="center" class="mb-6 ga-4">
+                                    <v-col cols="auto">
+                                        <v-btn variant="text" color="info" size="large">Text Large</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn variant="text" color="info">Text Default</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn variant="text" color="info" size="small">Text Small</v-btn>
+                                    </v-col>
+                                </v-row>
+                                <v-row align="center" class="ga-4">
+                                    <v-col cols="auto">
+                                        <v-btn color="success" prepend-icon="mdi-check-circle">Action</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="error" append-icon="mdi-cancel">Cancel</v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="warning" icon="mdi-alert-circle"></v-btn>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+                        </v-row>
+                    </div>
+
+                    <!-- Cards Section Content -->
+                    <div v-show="currentPage === 'cards'" class="content-section">
+                        <v-row class="mb-10">
+                            <v-col cols="12">
+                                <h2 class="text-h4 section-header text-blue-darken-3">04. Cards</h2>
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
+                                    Flexible containers for grouping related content, offering various levels of elevation and interaction.
+                                </p>
+                                <v-row>
+                                    <v-col cols="12" md="4">
+                                        <v-card elevation="2" rounded="lg">
+                                            <v-card-title class="text-h6 text-blue-darken-2">Basic Card</v-card-title>
+                                            <v-card-text>
+                                                This is a simple card with minimal elevation, suitable for general content display.
+                                            </v-card-text>
+                                            <v-card-actions>
+                                                <v-btn variant="text" color="primary">Learn More</v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-col>
+                                    <v-col cols="12" md="4">
+                                        <v-card elevation="8" rounded="lg">
+                                            <v-card-title class="text-h6 text-blue-darken-2">Elevated Card</v-card-title>
+                                            <v-card-text>
+                                                A card with higher elevation, drawing more attention to its content. Ideal for important information.
+                                            </v-card-text>
+                                            <v-card-actions>
+                                                <v-btn variant="text" color="primary">View Details</v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-col>
+                                    <v-col cols="12" md="4">
+                                        <v-card elevation="0" rounded="lg" border>
+                                            <v-card-title class="text-h6 text-blue-darken-2">Outlined Card</v-card-title>
+                                            <v-card-text>
+                                                A card with an outline, blending more subtly into the background. Useful for secondary content.
+                                            </v-card-text>
+                                            <v-card-actions>
+                                                <v-btn variant="text" color="primary">Explore</v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+                        </v-row>
+                    </div>
+
+                </v-container>
+            </v-main>
+
+            <!-- Footer -->
+            <v-footer
+                app
+                class="d-flex justify-center py-4"
+                color="grey-lighten-4"
+            >
+                <a
+                    href="https://github.com/kirstenf67/design-system"
+                    target="_blank"
+                    class="text-decoration-none text-grey-darken-3"
+                    rel="noopener noreferrer"
+                >
+                    <v-icon icon="mdi-github" size="24"></v-icon>
+                    <span class="ml-2">View Orange Owl Design Projects</span>
+                </a>
+            </v-footer>
+        </v-app>
     </div>
 
     <!-- Vue and Vuetify JavaScript Libraries -->
