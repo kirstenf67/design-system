@@ -14,7 +14,7 @@
 <body>
     <div id="app">
         <v-app>
-            <v-app-bar app color="blue-grey-darken-3" dark>
+            <v-app-bar app color="bg-deep-orange-accent-4" dark>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -24,8 +24,8 @@
             </v-app-bar>
 
             <v-navigation-drawer 
-                class="bg-deep-orange-accent-4"
-                theme="dark"
+                class="bg-deep-orange-lighten-5"
+                theme="light"
                 v-model="drawer"
                 app
                 :permanent="$vuetify.display.mdAndUp"
