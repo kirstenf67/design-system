@@ -14,7 +14,7 @@
 <body>
     <div id="app">
         <v-app>
-            <v-app-bar app color="bg-deep-orange-accent-4" dark>
+            <v-app-bar app color="white" light>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -24,7 +24,7 @@
             </v-app-bar>
 
             <v-navigation-drawer 
-                class="bg-deep-orange-lighten-5"
+                class="bg-blue-lighten-5"
                 theme="light"
                 v-model="drawer"
                 app
@@ -51,13 +51,6 @@
 
             <v-main>
                 <v-container>
-                    <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
-                        Custom Design Library
-                    </h1>
-                    <p class="text-center text-body-1 text-grey-darken-2 mb-12">
-                        A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
-                    </p>
-
                     <div v-show="currentPage === 'introduction'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
