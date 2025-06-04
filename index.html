@@ -23,13 +23,15 @@
                 </v-btn>
             </v-app-bar>
 
-            <v-navigation-drawer
+            <v-navigation-drawer 
+                class="bg-deep-orange-accent-4"
+                theme="dark"
                 v-model="drawer"
                 app
                 :permanent="$vuetify.display.mdAndUp"
                 :temporary="!$vuetify.display.mdAndUp"
             >
-                <v-list nav dense>
+                <v-list density="default" color="transparent" nav>
                     <v-list-item
                         v-for="(item, i) in navigationItems"
                         :key="i"
