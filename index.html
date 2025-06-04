@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirsten's Design System</title>
+    <title>Custom Design Library</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@3.8.8/dist/vuetify.min.css" rel="stylesheet">
     <style>
-        /* Custom global styles for your design library showcase */
+        /* Custom global styles */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f0f2f5; /* A soft, light gray background */
             line-height: 1.6;
             overflow-y: auto !important; /* Ensures proper scrolling behavior with Vuetify's layout */
         }
-        /* The #app styling here is largely overridden by Vuetify's app layout, but useful for quick visual checks */
         #app {
             /* max-width: 1200px; */ /* Removed as Vuetify's v-container handles content width */
             /* margin: 40px auto; */   /* Removed due to app layout */
             /* padding: 30px; */      /* Removed due to app layout */
-            background-color: white; /* Still relevant for the main content background */
-            border-radius: 12px; /* More pronounced rounded corners */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow for elevation */
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
         .section-header {
-            font-weight: 700; /* Bold headings */
+            font-weight: 700;
             margin-bottom: 24px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+            border-bottom: 2px solid #e0e0e0;
         }
         .color-swatch {
             width: 100px;
@@ -41,26 +40,21 @@
             justify-content: center;
             font-size: 0.85rem;
             font-weight: 500;
-            color: white; /* Default text color for swatches */
+            color: white;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .color-swatch.dark-text {
-            color: #333; /* For light background swatches */
+            color: #333;
         }
 
-        /* Adjustments for the main content area with app-bar and nav-drawer */
+        /* Adjustments for main content area with app-bar and nav-drawer */
         .v-main {
             padding-top: 64px !important; /* Default app-bar height */
-            /* If you want less spacing at the top of your content when the drawer is open on desktop,
-               you might need to adjust this or the v-container padding. */
         }
-        /* Styles for the individual content sections, now wrapped in v-show */
         .content-section {
-            padding: 30px 0; /* Add vertical padding for separation */
+            padding: 30px 0;
             margin-bottom: 20px;
-            /* Removed border, border-radius, background-color, box-shadow from here
-               as they are now applied to the #app container or the content itself. */
         }
     </style>
 </head>
@@ -69,7 +63,7 @@
         <v-app>
             <v-app-bar app color="blue-grey-darken-3" dark>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-                <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
+                <v-toolbar-title>Custom Design System</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn icon href="https://github.com/kirstenf67/design-system/" target="_blank">
                     <v-icon>mdi-github</v-icon>
@@ -373,16 +367,14 @@
                         { id: 'introduction', title: 'Introduction', icon: 'mdi-home', link: '#introduction' },
                         { id: 'colors', title: 'Colors', icon: 'mdi-palette', link: '#colors' },
                         { id: 'typography', title: 'Typography', icon: 'mdi-format-text', link: '#typography' },
-                        { id: 'buttons', title: 'Buttons', icon: 'mdi-gesture-tap-button', link: '#buttons' }, // Added buttons
-                        { id: 'cards', title: 'Cards', icon: 'mdi-card-bulleted', link: '#cards' },           // Added cards
-                        // Add more navigation items as you add content sections
+                        { id: 'buttons', title: 'Buttons', link: '#buttons' }, 
+                        { id: 'cards', title: 'Cards', link: '#cards' }, 
                         // { id: 'forms', title: 'Forms', icon: 'mdi-form-select', link: '#forms' },
                         // { id: 'modals', title: 'Modals', icon: 'mdi-message-text', link: '#modals' },
                     ],
                 };
             },
             methods: {
-                // Updates `currentPage` based on the URL hash
                 updateCurrentPage() {
                     const hash = window.location.hash.substring(1); // Remove the '#'
                     if (hash) {
