@@ -18,10 +18,10 @@ const customThemeColors = {
     },
     dark: {
       colors: {
-      primary: '#BB86FC',
-      secondary: '#B0BEC5',
-      surface: '#121212',
-      background: '#121212',
+          primary: '#BB86FC',
+          secondary: '#B0BEC5',
+          surface: '#121212',
+          background: '#121212',
       }
     }
 };
