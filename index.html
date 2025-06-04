@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirsten's Design System</title>
 
-    <!-- External Stylesheets and Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@3.8.8/dist/vuetify.min.css" rel="stylesheet">
 
-    <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="app">
-        <!-- The <v-app> component is the root for Vuetify's layout system.
-             All layout components (v-app-bar, v-navigation-drawer, v-main, v-footer)
-             MUST be direct children of v-app. -->
         <v-app>
-            <!-- Application Bar (Header) -->
             <v-app-bar app color="blue-grey-darken-3" dark>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
@@ -29,7 +23,6 @@
                 </v-btn>
             </v-app-bar>
 
-            <!-- Navigation Drawer (Sidebar) -->
             <v-navigation-drawer
                 v-model="drawer"
                 app
@@ -54,10 +47,8 @@
                 </v-list>
             </v-navigation-drawer>
 
-            <!-- Main Content Area -->
             <v-main>
                 <v-container>
-                    <!-- Global Page Title and Description -->
                     <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
                         Custom Design Library
                     </h1>
@@ -292,10 +283,8 @@
         </v-app>
     </div>
 
-    <!-- Vue and Vuetify JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.8.8/dist/vuetify.min.js"></script>
-    <!-- Your Custom JavaScript -->
     <script src="js/app.js"></script>
 </body>
 </html>
