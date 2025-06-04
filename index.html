@@ -3,73 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Design Library</title>
+    <title>Kirsten's Design System</title>
 
+    <!-- External Stylesheets and Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@3.8.8/dist/vuetify.min.css" rel="stylesheet">
-    <style>
-        /* Custom global styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f0f2f5; /* A soft, light gray background */
-            line-height: 1.6;
-            overflow-y: auto !important; /* Ensures proper scrolling behavior with Vuetify's layout */
-        }
-        #app {
-            /* max-width: 1200px; */ /* Removed as Vuetify's v-container handles content width */
-            /* margin: 40px auto; */   /* Removed due to app layout */
-            /* padding: 30px; */      /* Removed due to app layout */
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        .section-header {
-            font-weight: 700;
-            margin-bottom: 24px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-        .color-swatch {
-            width: 100px;
-            height: 100px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: white;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .color-swatch.dark-text {
-            color: #333;
-        }
 
-        /* Adjustments for main content area with app-bar and nav-drawer */
-        .v-main {
-            padding-top: 64px !important; /* Default app-bar height */
-        }
-        .content-section {
-            padding: 30px 0;
-            margin-bottom: 20px;
-        }
-    </style>
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
         <v-app>
+            <!-- Application Bar (Header) -->
             <v-app-bar app color="blue-grey-darken-3" dark>
                 <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-                <v-toolbar-title>Custom Design System</v-toolbar-title>
+                <v-toolbar-title>Kirsten's Design System</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn icon href="https://github.com/kirstenf67/design-system/" target="_blank">
                     <v-icon>mdi-github</v-icon>
                 </v-btn>
             </v-app-bar>
 
+            <!-- Navigation Drawer (Sidebar) -->
             <v-navigation-drawer
                 v-model="drawer"
                 app
@@ -80,13 +37,13 @@
                     <v-list-item
                         v-for="(item, i) in navigationItems"
                         :key="i"
-                        :href="item.link"
+                        :href="item.link"  <!-- Links now use hash-based routing -->
                         link
                         @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
                         :active="currentPage === item.id"
                         color="primary"
                     >
-                        <v-list-item-icon>
+                        <v-list-item-icon v-if="item.icon">
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -94,8 +51,10 @@
                 </v-list>
             </v-navigation-drawer>
 
+            <!-- Main Content Area -->
             <v-main>
                 <v-container>
+                    <!-- Global Page Title and Description -->
                     <h1 class="text-h3 text-center text-blue-darken-4 mb-10 font-weight-bold">
                         Custom Design Library
                     </h1>
@@ -103,6 +62,7 @@
                         A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
                     </p>
 
+                    <!-- Introduction Section Content -->
                     <div v-show="currentPage === 'introduction'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -121,6 +81,7 @@
                         </v-row>
                     </div>
 
+                    <!-- Colors Section Content -->
                     <div v-show="currentPage === 'colors'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -164,46 +125,48 @@
                         </v-row>
                     </div>
 
+                    <!-- Typography Section Content -->
                     <div v-show="currentPage === 'typography'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
                                 <h2 class="text-h4 section-header text-blue-darken-3">02. Typography</h2>
-                                <p class="text-body-1  mb-6">
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
                                     Guidelines for consistent text hierarchy, readability, and visual impact across the interface.
                                 </p>
                                 <div class="mb-4">
                                     <h1 class="text-h3 font-weight-bold mb-2">Heading 1 - The quick brown fox jumps over the lazy dog.</h1>
-                                    <p class="text-caption ">Used for main page titles.</p>
+                                    <p class="text-caption text-grey">Used for main page titles.</p>
                                 </div>
                                 <div class="mb-4">
                                     <h2 class="text-h4 font-weight-medium mb-2">Heading 2 - The quick brown fox jumps over the lazy dog.</h2>
-                                    <p class="text-caption ">Used for section titles.</p>
+                                    <p class="text-caption text-grey">Used for section titles.</p>
                                 </div>
                                 <div class="mb-4">
                                     <h3 class="text-h5 mb-2">Heading 3 - The quick brown fox jumps over the lazy dog.</h3>
-                                    <p class="text-caption ">Used for sub-sections.</p>
+                                    <p class="text-caption text-grey">Used for sub-sections.</p>
                                 </div>
                                 <div class="mb-4">
                                     <p class="text-body-1 mb-2">Body Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    <p class="text-caption ">Standard paragraph text for content.</p>
+                                    <p class="text-caption text-grey">Standard paragraph text for content.</p>
                                 </div>
                                 <div class="mb-4">
                                     <p class="text-subtitle-1 font-weight-medium mb-2">Subtitle 1 - The quick brown fox jumps over the lazy dog.</p>
-                                    <p class="text-caption ">Used for prominent secondary text.</p>
+                                    <p class="text-caption text-grey">Used for prominent secondary text.</p>
                                 </div>
                                 <div class="mb-4">
                                     <p class="text-caption mb-2">Caption Text - The quick brown fox jumps over the lazy dog.</p>
-                                    <p class="text-caption ">Small text for annotations or details.</p>
+                                    <p class="text-caption text-grey">Small text for annotations or details.</p>
                                 </div>
                             </v-col>
                         </v-row>
                     </div>
 
+                    <!-- Buttons Section Content -->
                     <div v-show="currentPage === 'buttons'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
                                 <h2 class="text-h4 section-header text-blue-darken-3">03. Buttons</h2>
-                                <p class="text-body-1  mb-6">
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
                                     Interactive elements for user actions, categorized by hierarchy and visual emphasis.
                                 </p>
                                 <v-row align="center" class="mb-6 ga-4">
@@ -257,11 +220,12 @@
                         </v-row>
                     </div>
 
+                    <!-- Cards Section Content -->
                     <div v-show="currentPage === 'cards'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
                                 <h2 class="text-h4 section-header text-blue-darken-3">04. Cards</h2>
-                                <p class="text-body-1  mb-6">
+                                <p class="text-body-1 text-grey-darken-1 mb-6">
                                     Flexible containers for grouping related content, offering various levels of elevation and interaction.
                                 </p>
                                 <v-row>
@@ -303,9 +267,10 @@
                         </v-row>
                     </div>
 
-                    </v-container>
+                </v-container>
             </v-main>
 
+            <!-- Footer -->
             <v-footer
                 app
                 class="d-flex justify-center py-4"
@@ -324,96 +289,10 @@
         </v-app>
     </div>
 
+    <!-- Vue and Vuetify JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.8.8/dist/vuetify.min.js"></script>
-    <script>
-        // Destructure necessary functions from the global Vue and Vuetify objects
-        const { createApp, ref, computed } = Vue;
-        const { createVuetify } = Vuetify;
-
-        // Create the Vuetify instance with your custom theme colors
-        const vuetify = createVuetify({
-            theme: {
-                themes: {
-                    light: {
-                        colors: {
-                            primary: '#013886', // A standard blue
-                            secondary: '#424242', // Dark grey
-                            accent: '#FFC107', // Amber
-                            error: '#FF5252', // Red
-                            info: '#2196F3', // Light blue
-                            success: '#4CAF50', // Green
-                            warning: '#FFC107', // Amber
-
-                            // Your Custom Brand Colors
-                            customBrandBlue: '#0A2E59', // Example: A deep, rich blue
-                            customBrandGreen: '#4CAF50', // Example: A vibrant green
-                            customBrandAccent: '#FFD700', // Example: A golden yellow
-                            customNeutralLight: '#F5F5F5', // Example: A very light gray
-                            customNeutralDark: '#333333', // Example: A dark charcoal
-                        },
-                    },
-                },
-            },
-        });
-
-        // Create the Vue app instance
-        const app = createApp({
-            data() {
-                return {
-                    drawer: true, // Controls the visibility of the navigation drawer
-                    currentPage: 'introduction', // Stores the ID of the currently active content section
-                    navigationItems: [
-                        { id: 'introduction', title: 'Introduction', icon: 'mdi-home', link: '#introduction' },
-                        { id: 'colors', title: 'Colors', icon: 'mdi-palette', link: '#colors' },
-                        { id: 'typography', title: 'Typography', icon: 'mdi-format-text', link: '#typography' },
-                        { id: 'buttons', title: 'Buttons', link: '#buttons' }, 
-                        { id: 'cards', title: 'Cards', link: '#cards' }, 
-                        // { id: 'forms', title: 'Forms', icon: 'mdi-form-select', link: '#forms' },
-                        // { id: 'modals', title: 'Modals', icon: 'mdi-message-text', link: '#modals' },
-                    ],
-                };
-            },
-            methods: {
-                updateCurrentPage() {
-                    const hash = window.location.hash.substring(1); // Remove the '#'
-                    if (hash) {
-                        // Check if the hash matches any of our navigation item IDs
-                        const foundItem = this.navigationItems.find(item => item.id === hash);
-                        if (foundItem) {
-                            this.currentPage = hash;
-                        } else {
-                            // Fallback to introduction if hash doesn't match a defined section
-                            this.currentPage = 'introduction';
-                        }
-                    } else {
-                        this.currentPage = 'introduction'; // Default page if no hash in URL
-                    }
-                },
-            },
-            mounted() {
-                // Set initial drawer state based on screen size (open on desktop, closed on mobile)
-                this.drawer = this.$vuetify.mdAndUp;
-
-                // Listen for URL hash changes (e.g., when clicking navigation links or browser back/forward)
-                window.addEventListener('hashchange', this.updateCurrentPage);
-
-                // Call it once on mount to set the initial page based on the URL hash or default
-                this.updateCurrentPage();
-            },
-            watch: {
-                // Watch for changes in Vuetify's breakpoint to adjust drawer visibility
-                '$vuetify.mdAndUp'(newVal) {
-                    this.drawer = newVal;
-                },
-            },
-        });
-
-        // Use Vuetify with the Vue app
-        app.use(vuetify);
-
-        // Mount the app to the #app div
-        app.mount('#app');
-    </script>
+    <!-- Your Custom JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
