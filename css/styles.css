@@ -1,0 +1,49 @@
+/* Custom global styles for your design library showcase */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5; /* A soft, light gray background */
+    line-height: 1.6;
+    overflow-y: auto !important; /* Ensures proper scrolling behavior with Vuetify's layout */
+}
+/* The #app styling here is largely overridden by Vuetify's app layout, but useful for quick visual checks */
+#app {
+    background-color: white; /* Still relevant for the main content background */
+    border-radius: 12px; /* More pronounced rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow for elevation */
+}
+.section-header {
+    font-weight: 700; /* Bold headings */
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0; /* Subtle separator */
+}
+.color-swatch {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white; /* Default text color for swatches */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.color-swatch.dark-text {
+    color: #333; /* For light background swatches */
+}
+
+/* Adjustments for the main content area with app-bar and nav-drawer */
+.v-main {
+    padding-top: 64px !important; /* Default app-bar height */
+    /* If you want less spacing at the top of your content when the drawer is open on desktop,
+       you might need to adjust this or the v-container padding. */
+}
+/* Styles for the individual content sections, now wrapped in v-show */
+.content-section {
+    padding: 30px 0; /* Add vertical padding for separation */
+    margin-bottom: 20px;
+}
+
