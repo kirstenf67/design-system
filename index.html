@@ -33,7 +33,7 @@
                     <v-list-item
                         v-for="(item, i) in navigationItems"
                         :key="i"
-                        :href="item.link"  <!-- Links now use hash-based routing -->
+                        :href="item.link"
                         link
                         @click="currentPage = item.id; if (!$vuetify.display.mdAndUp) drawer = false;"
                         :active="currentPage === item.id"
@@ -56,7 +56,6 @@
                         A curated collection of UI components and design guidelines, showcasing a consistent and intuitive user experience.
                     </p>
 
-                    <!-- Introduction Section Content -->
                     <div v-show="currentPage === 'introduction'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -75,7 +74,6 @@
                         </v-row>
                     </div>
 
-                    <!-- Colors Section Content -->
                     <div v-show="currentPage === 'colors'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -119,7 +117,6 @@
                         </v-row>
                     </div>
 
-                    <!-- Typography Section Content -->
                     <div v-show="currentPage === 'typography'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -155,7 +152,6 @@
                         </v-row>
                     </div>
 
-                    <!-- Buttons Section Content -->
                     <div v-show="currentPage === 'buttons'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -214,7 +210,6 @@
                         </v-row>
                     </div>
 
-                    <!-- Cards Section Content -->
                     <div v-show="currentPage === 'cards'" class="content-section">
                         <v-row class="mb-10">
                             <v-col cols="12">
@@ -264,7 +259,6 @@
                 </v-container>
             </v-main>
 
-            <!-- Footer -->
             <v-footer
                 app
                 class="d-flex justify-center py-4"
